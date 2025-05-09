@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:yesno/domain/entities/message.dart';
 
 class HimMessageBubble extends StatelessWidget {
-  const HimMessageBubble({super.key});
+
+  final Message message;
+
+  const HimMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +19,13 @@ class HimMessageBubble extends StatelessWidget {
             color: colors.secondary,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text('Hola mundo', style: TextStyle(color: Colors.white)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Text(message.text, style: const TextStyle(color: Colors.white)),
           ),
         ),
         const SizedBox(height: 10),
-        _ImageBubble(),
+        _ImageBubble(message.imageUrl ?? ''),
         const SizedBox(height: 10),
       ],
     );
@@ -29,6 +33,10 @@ class HimMessageBubble extends StatelessWidget {
 }
 
 class _ImageBubble extends StatelessWidget {
+
+  final String imageUrl;
+
+  const _ImageBubble(this.imageUrl);
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +46,7 @@ class _ImageBubble extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: Image.network(
-        'https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3hoOGFpa21iMjRjNDZ2ZjN3eTh6d3V5cXNqMW41em95Zmt1d21kNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LSmULmByAQHQs/giphy.gif',
+        imageUrl,
         width: size.width * 0.7,
         height: 150,
         fit: BoxFit.cover,
