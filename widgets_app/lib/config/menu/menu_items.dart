@@ -26,4 +26,39 @@ const appMenuItems = <MenuItem>[
     title: 'Tarjetas', 
     subtitle: 'Varios tipos de tarjetas en Flutter', 
     link: '/cards'),
+  MenuItem(
+    icon: Icons.refresh_rounded, 
+    title: 'Progreso', 
+    subtitle: 'Generales y controlados', 
+    link: '/progress'),
+  MenuItem(
+    icon: Icons.animation_outlined, 
+    title: 'Animaciones', 
+    subtitle: 'Varios tipos de animaciones en Flutter', 
+    link: '/animated'),
+  MenuItem(
+    icon: Icons.tour_outlined, 
+    title: 'Tutorial', 
+    subtitle: 'Tutorial de la app', 
+    link: '/app_tutorial'),
+  MenuItem(
+    icon: Icons.credit_card, 
+    title: 'Scroll infinito', 
+    subtitle: 'Scroll infinito en Flutter', 
+    link: '/infinite_scroll'),
+  MenuItem(
+    icon: Icons.credit_card, 
+    title: 'Snackbars', 
+    subtitle: 'Snackbars en Flutter', 
+    link: '/snackbar'),
+  MenuItem(
+    icon: Icons.control_camera_outlined, 
+    title: 'Controles UI', 
+    subtitle: 'Controles de UI en Flutter', 
+    link: '/ui_controls'),
+  MenuItem(
+    icon: Icons.tour_outlined, 
+    title: 'Tutorial', 
+    subtitle: 'Tutorial de la app', 
+    link: '/app_tutorial'),
 ];
