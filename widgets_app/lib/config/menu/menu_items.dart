@@ -38,8 +38,8 @@ const appMenuItems = <MenuItem>[
     link: '/snackbar'),
   MenuItem(
     icon: Icons.animation_outlined, 
-    title: 'Animaciones', 
-    subtitle: 'Varios tipos de animaciones en Flutter', 
+    title: 'Animated container', 
+    subtitle: 'Stateful widget animated', 
     link: '/animated'),
   MenuItem(
     icon: Icons.tour_outlined, 
