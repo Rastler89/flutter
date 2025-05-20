@@ -42,6 +42,11 @@ const appMenuItems = <MenuItem>[
     subtitle: 'Stateful widget animated', 
     link: '/animated'),
   MenuItem(
+    icon: Icons.control_camera_outlined, 
+    title: 'Controles UI', 
+    subtitle: 'Controles de UI en Flutter', 
+    link: '/ui_controls'),
+  MenuItem(
     icon: Icons.tour_outlined, 
     title: 'Tutorial', 
     subtitle: 'Tutorial de la app', 
@@ -51,11 +56,6 @@ const appMenuItems = <MenuItem>[
     title: 'Scroll infinito', 
     subtitle: 'Scroll infinito en Flutter', 
     link: '/infinite_scroll'),
-  MenuItem(
-    icon: Icons.control_camera_outlined, 
-    title: 'Controles UI', 
-    subtitle: 'Controles de UI en Flutter', 
-    link: '/ui_controls'),
   MenuItem(
     icon: Icons.tour_outlined, 
     title: 'Tutorial', 
