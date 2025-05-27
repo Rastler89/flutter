@@ -45,5 +45,13 @@ final appRouter = GoRouter(
       path: '/app_tutorial',
       builder: (context, state) => const AppTutorialScreen(),
     ),
+    GoRoute(
+      path: '/counter-river',
+      builder: (context, state) => const CounterScreen(),
+    ),
+    GoRoute(
+      path: '/theme-changer',
+      builder: (context, state) => const ThemeChangerScreen(),
+    ),
   ]
 );
