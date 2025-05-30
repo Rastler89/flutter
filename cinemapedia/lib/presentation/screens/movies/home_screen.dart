@@ -42,16 +42,49 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
     if (nowPlayingMovies.isEmpty) { return CircularProgressIndicator(); }
 
-    return Column(
-      children: [
-        CustomAppbar(),
-        MoviesLideshow(movies: moviesSlideshow),
-        MovieHorizontalListview(
-          movies: nowPlayingMovies,
-          title: 'En cines',
-          subTitle: 'Lunes 20',
-          onNextPage: () => ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
-          )
+    return CustomScrollView(
+      slivers: [
+        const SliverAppBar(
+          floating: true,
+          flexibleSpace: FlexibleSpaceBar(
+            title: CustomAppbar()
+          ),
+        ),
+        SliverList(delegate: SliverChildBuilderDelegate(
+          (context, index) {
+            return Column(
+              children: [
+                MoviesLideshow(movies: moviesSlideshow),
+                MovieHorizontalListview(
+                  movies: nowPlayingMovies,
+                  title: 'En cines',
+                  subTitle: 'En este mes',
+                  onNextPage: () => ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+                  ),
+                MovieHorizontalListview(
+                  movies: nowPlayingMovies,
+                  title: 'Próximamente',
+                  subTitle: 'En este mes',
+                  onNextPage: () => ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+                  ),
+                MovieHorizontalListview(
+                  movies: nowPlayingMovies,
+                  title: 'Populares',
+                  //subTitle: 'En este mes',
+                  onNextPage: () => ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+                  ),
+                MovieHorizontalListview(
+                  movies: nowPlayingMovies,
+                  title: 'Sin texto',
+                  //subTitle: 'En este mes',
+                  onNextPage: () => ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+                  ),
+                const SizedBox(height: 10),
+              ]
+            );
+          },
+          childCount: 1,
+        ))
       ]
     );
   }
