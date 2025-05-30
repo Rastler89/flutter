@@ -1,4 +1,4 @@
-import 'package:cinemapedia/presentation/providers/movies/movies_providers.dart';
+import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:cinemapedia/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,7 +12,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: _HomeView()
+      body: _HomeView(),
+      bottomNavigationBar: CustomBottomNavigation(),
     );
   }
 }
@@ -37,13 +38,14 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   Widget build(BuildContext context) {
 
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
+    final moviesSlideshow = ref.watch(moviesSlideshowProvider);
 
-    if (nowPlayingMovies.length == 0) { return CircularProgressIndicator(); }
+    if (nowPlayingMovies.isEmpty) { return CircularProgressIndicator(); }
 
     return Column(
       children: [
         CustomAppbar(),
-        MoviesLideshow(movies: nowPlayingMovies),
+        MoviesLideshow(movies: moviesSlideshow),
       ]
     );
   }
