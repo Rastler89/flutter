@@ -32,15 +32,25 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     super.initState();
     
     ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+    ref.read(popularMoviesProvider.notifier).loadNextPage();
+    ref.read(comingMoviesProvider.notifier).loadNextPage();
+    ref.read(ratedMoviesProvider.notifier).loadNextPage();
   }
 
   @override
   Widget build(BuildContext context) {
 
+    final initialLoading = ref.watch(initialLoadingProvider);
+    if (initialLoading) {
+      return const FullScreenLoader();
+    }
+
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
     final moviesSlideshow = ref.watch(moviesSlideshowProvider);
+    final popularMovies = ref.watch(popularMoviesProvider);
+    final comingMovies = ref.watch(comingMoviesProvider);
+    final ratedMovies = ref.watch(ratedMoviesProvider);
 
-    if (nowPlayingMovies.isEmpty) { return CircularProgressIndicator(); }
 
     return CustomScrollView(
       slivers: [
@@ -62,22 +72,22 @@ class _HomeViewState extends ConsumerState<_HomeView> {
                   onNextPage: () => ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
                   ),
                 MovieHorizontalListview(
-                  movies: nowPlayingMovies,
+                  movies: comingMovies,
                   title: 'Próximamente',
                   subTitle: 'En este mes',
-                  onNextPage: () => ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+                  onNextPage: () => ref.read(comingMoviesProvider.notifier).loadNextPage(),
                   ),
                 MovieHorizontalListview(
-                  movies: nowPlayingMovies,
+                  movies: popularMovies,
                   title: 'Populares',
                   //subTitle: 'En este mes',
-                  onNextPage: () => ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+                  onNextPage: () => ref.read(popularMoviesProvider.notifier).loadNextPage(),
                   ),
                 MovieHorizontalListview(
-                  movies: nowPlayingMovies,
-                  title: 'Sin texto',
+                  movies: ratedMovies,
+                  title: 'Mejor valoradas',
                   //subTitle: 'En este mes',
-                  onNextPage: () => ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+                  onNextPage: () => ref.read(ratedMoviesProvider.notifier).loadNextPage(),
                   ),
                 const SizedBox(height: 10),
               ]
