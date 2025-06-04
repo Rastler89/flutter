@@ -30,7 +30,6 @@ flutter:
   assets:
     - .env
     - assets/icon/
-    - assets/loaders/
 
 flutter_launcher_icons:
   android: "launcher_icon"
