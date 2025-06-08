@@ -113,7 +113,6 @@ class _MovieDetails extends StatelessWidget {
             ]
           )
         ),
-        //TODO Mostrar actores
         _ActorsByMovie(movieId: movie.id.toString()),
         const SizedBox(height:50)
       ],
