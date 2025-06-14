@@ -12,13 +12,22 @@ class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
     required this.pageIndex
-    });
+  });
+
+  final viewRoutes = const <Widget>[
+    HomeView(),
+    SizedBox(), //categories
+    FavoritesView()
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: HomeView(),
-      bottomNavigationBar: CustomBottomNavigation(),
+    return Scaffold(
+      body: IndexedStack(
+        index: pageIndex,
+        children: viewRoutes
+      ),
+      bottomNavigationBar: CustomBottomNavigation(currentIndex: pageIndex),
     );
   }
 }
